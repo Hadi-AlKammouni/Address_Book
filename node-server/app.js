@@ -3,6 +3,7 @@ require("./config/database").connect();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const express = require("express");
+const auth = require("./middleware/auth");
 
 const app = express();
 app.use(express.json());
@@ -11,7 +12,7 @@ module.exports = app;
 
 // Logic goes here
 
-// // importing user context
+// importing user context
 const User = require("./model/user");
 
 // Register
@@ -105,3 +106,8 @@ app.post("/login", async (req, res) => {
     }
     // Our login logic ends here
   });
+
+//Authenticating the user
+app.post("/welcome", auth, (req, res) => {
+    res.status(200).send("Welcome 🙌 ");
+});
