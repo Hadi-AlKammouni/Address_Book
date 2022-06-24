@@ -1,19 +1,11 @@
-require("dotenv").config();
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+const http = require("http");
+const app = require("./app");
+const server = http.createServer(app);
 
-const port = 3000;
+const { API_PORT } = process.env;
+const port = process.env.PORT || API_PORT;
 
-const app = express();
-app.use(express.json()); 
-app.use(cors());
-
-app.get("/", (req, res) => {
-    res.json({message: "Helloo"})
-})
-
-app.listen(
-    port,
-    () => console.log(`Listening on port ${port}`)
-);
+// server listening 
+server.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
