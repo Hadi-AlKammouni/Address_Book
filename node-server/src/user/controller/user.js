@@ -129,13 +129,13 @@ async function login (req, res) {
     // Our login logic ends here
 };
 
-// //Authenticating the user
-// async function welcome (req, res) {
-//     res.status(200).send("Welcome 🙌 ");
-// };
+//Authenticating the user
+async function welcome (req, res) {
+    res.status(200).send("Welcome 🙌 ");
+};
 
 module.exports = {
-    // welcome,
+    welcome,
     get,
     register,
     login,
