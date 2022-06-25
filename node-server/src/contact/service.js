@@ -7,6 +7,7 @@ async function addContact(body) {
     relationship_status,
     email,
     location,
+    user,
   } = body;
 
   const contact = new Contact({
@@ -15,13 +16,14 @@ async function addContact(body) {
     relationship_status,
     email,
     location,
+    user,
   });
 
   return await contact.save();
 }
 
 async function getContacts() {
-    return await Contact.find();
+    return await Contact.find().populate('users');
 }
 
 module.exports = {
