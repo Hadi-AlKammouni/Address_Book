@@ -1,3 +1,4 @@
+const { getUsers } = require('../service');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 // const auth = require("../../../middleware/auth");
@@ -6,6 +7,19 @@ const jwt = require('jsonwebtoken');
 
 // importing user context
 const User = require("../../../model/user");
+
+async function get(req, res) {
+  try {
+    // console.log(req.query);
+
+    const result = await getUsers();
+    console.log('result =>', result);
+
+    return res.send(result);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 // Register
 async function register (req, res) {
@@ -106,6 +120,7 @@ async function login (req, res) {
 
 module.exports = {
     // welcome,
+    get,
     register,
     login,
 };
