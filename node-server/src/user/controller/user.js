@@ -1,23 +1,14 @@
-require("dotenv").config();
-require("./config/database").connect();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const express = require("express");
-const auth = require("./middleware/auth");
-
-const app = express();
-app.use(express.json());
-
-module.exports = app;
+// const auth = require("../../../middleware/auth");
 
 // Logic goes here
 
 // importing user context
-const User = require("./model/user");
-const Contact = require("./model/contact");
+const User = require("../../../model/user");
 
 // Register
-app.post("/register", async (req, res) => {
+async function register (req, res) {
 
     // Our register logic starts here
     try {
@@ -66,10 +57,10 @@ app.post("/register", async (req, res) => {
       console.log(err);
     }
   // Our register logic ends here
-});
+};
 
 // Login
-app.post("/login", async (req, res) => {
+async function login (req, res) {
 
     // Our login logic starts here
     try {
@@ -106,9 +97,15 @@ app.post("/login", async (req, res) => {
       console.log(err);
     }
     // Our login logic ends here
-  });
+};
 
-//Authenticating the user
-app.post("/welcome", auth, (req, res) => {
-    res.status(200).send("Welcome 🙌 ");
-});
+// //Authenticating the user
+// async function welcome (req, res) {
+//     res.status(200).send("Welcome 🙌 ");
+// };
+
+module.exports = {
+    // welcome,
+    register,
+    login,
+};
