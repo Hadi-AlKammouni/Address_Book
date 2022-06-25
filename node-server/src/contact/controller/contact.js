@@ -1,4 +1,4 @@
-const { addContact } = require('../service');
+const { addContact, getContacts } = require('../service');
 const Contact = require("../../../model/contact");
 
 async function add(req, res) {
@@ -15,6 +15,20 @@ async function add(req, res) {
   }
 }
 
+async function get(req, res) {
+  try {
+    console.log(req.query);
+
+    const result = await getContacts();
+    console.log('result =>', result);
+
+    return res.send(result);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   add,
+  get,
 };

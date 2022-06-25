@@ -20,6 +20,11 @@ async function addContact(body) {
   return await contact.save();
 }
 
+async function getContacts() {
+    return await Contact.find();
+}
+
 module.exports = {
   addContact,
+  getContacts,
 }  
