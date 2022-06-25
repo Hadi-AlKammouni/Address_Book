@@ -1,4 +1,4 @@
-const { getUsers } = require('../service');
+const { getUsers, getById } = require('../service');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 // const auth = require("../../../middleware/auth");
@@ -10,7 +10,14 @@ const User = require("../../../model/user");
 
 async function get(req, res) {
   try {
-    // console.log(req.query);
+    // console.log("hi ", req.query.id);
+
+    if (req.query.id) {
+      const id = req.query.id;
+      const result = await getById(id);
+      console.log('result of specific user =>', result);
+      return res.send(result);
+    }
 
     const result = await getUsers();
     console.log('result =>', result);

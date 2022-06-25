@@ -5,6 +5,11 @@ async function getUsers() {
     // return await Task.find().populate('user');
 };
 
+async function getById(id) {
+    return await User.findById(id);
+  }
+
 module.exports = {
     getUsers,
+    getById,
 }
