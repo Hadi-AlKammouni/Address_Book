@@ -1,4 +1,4 @@
-const { getUsers, getById } = require('../service');
+const { getUsers, getById, getByEmail } = require('../service');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 // const auth = require("../../../middleware/auth");
@@ -11,12 +11,21 @@ const User = require("../../../model/user");
 async function get(req, res) {
   try {
     // console.log("hi ", req.query.id);
+    // console.log("hi ", req.query.email);
 
     if (req.query.id) {
       const id = req.query.id;
       const result = await getById(id);
       console.log('result of specific user =>', result);
       return res.send(result);
+    }
+    
+    //Get specific user reffering to his email
+    //To be corrected (if no such email in db it is returning [])
+    if (req.query.email) {
+      const user = await getByEmail(req.query.email);
+      console.log(user)
+      return res.send(user);
     }
 
     const result = await getUsers();
