@@ -14,6 +14,7 @@ module.exports = app;
 
 // importing user context
 const User = require("./model/user");
+const Contact = require("./model/contact");
 
 // Register
 app.post("/register", async (req, res) => {
@@ -33,9 +34,9 @@ app.post("/register", async (req, res) => {
       const oldUser = await User.findOne({ email });
   
       if (oldUser) {
-        // return res.status(409).send("User Already Exist. Please Login");
+        return res.status(409).send("User Already Exist. Please Login");
         // return "hey!";
-        return res.status().json();
+        // return res.status().json();
       }
   
       //Encrypt user password
