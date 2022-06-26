@@ -120,6 +120,37 @@ ul {
   transform: scale(1.1);
 }
 
+/* Update & remoev btns */
+
+.update-remove-div{
+  display: flex;
+  justify-content:space-evenly;
+}
+
+.update-btn, .remove-btn{
+  display: inline-block;
+  background: #15b3bfbc;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: inherit;
+  font-weight: bold;
+}
+
+.update-btn:active, .remove-btn:active {
+  transform: scale(0.9);
+}
+
+.update-btn:hover, .remove-btn:hover{
+  background-color: #53d7e0f1;
+}
+
+
 /* Utils */
 
 .container {

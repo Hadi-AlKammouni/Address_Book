@@ -24,6 +24,7 @@ const ViewContact = () => {
     }, [id]);
   
     return (
+        <section>
       <div className="container">
             <div className="contact">
                 <h1>{contact.name}</h1>
@@ -33,6 +34,11 @@ const ViewContact = () => {
                 {/* <h3>Location: {contact.location.coordinates[0]}</h3> */}
             </div>
       </div>
+      <div className="update-remove-div">
+      <input type={"button"} value={"update"} className="update-btn"/>
+      <input type={"button"} value={"remove"} className="remove-btn"/>
+      </div>
+      </section>
     );
 };
   
