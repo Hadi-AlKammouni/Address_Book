@@ -59,8 +59,27 @@ async function removeContact(req, res) {
   }
 }
 
+async function updateContact(req, res) {
+  try {
+    const contact = await Contact.findByIdAndUpdate( { _id: req.query.id } ,{
+        $set: {
+          name: req.body.name,
+          email: req.body.email,
+          phone_number: req.body.phone_number,
+          relationship_status: req.body.relationship_status,
+          location: req.body.location,
+          user: req.body.user,
+        },
+    });
+    return res.send("Contact Successfully Updated");
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   add,
   get,
   removeContact,
+  updateContact,
 };
