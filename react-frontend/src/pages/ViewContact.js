@@ -23,6 +23,49 @@ const ViewContact = () => {
         getData();
     }, [id]);
   
+        //Calling update api
+    const updateContact = async () => {
+        alert("Now select what to change")
+        let what_to_change = prompt(
+            "Enter N to change the contact name // E to change the contact email // # to change the contact phone number // R to change relationship status // anything else to skip"
+        );
+        console.log(what_to_change)
+        if (what_to_change === "N"){
+            let new_name= prompt("Choose new name");
+            console.log(new_name)
+            var info = {"name" : new_name}
+            alert(`Name has been updated to ${new_name}✌`)
+        }else if (what_to_change === "E"){
+            let new_email= prompt("Choose new email");
+            console.log(new_email)
+            var info = {"email" : new_email}
+            alert(`Email has been to updated ${new_email}✌`)
+        }else if (what_to_change === "#"){
+            let new_phone_number= prompt("Choose new phone number");
+            console.log(new_phone_number)
+            var info = {"phone_number" : new_phone_number}
+            alert(`Phone number has been updated to ${new_phone_number}✌`)
+        }else if (what_to_change === "R"){
+            let new_relationship_status= prompt("Choose new relationship status");
+            console.log(new_relationship_status)
+            var info = {"relationship_status" : new_relationship_status}
+            alert(`Relationship status has been updated to ${new_relationship_status}✌`)
+        }else if (what_to_change !== ("N" || "E" || "#" || "R")){
+            alert(`Nothing changed`)
+        }
+    
+        var update_url = "http://localhost:4001/api/contact/update_contact?id=" + id;
+        const res = await fetch(update_url,{
+          method: "POST",
+          headers:{
+            "Content-Type" : "application/json",
+          },
+          body: JSON.stringify(info)
+        });
+        console.log("hiii");
+        window.location.reload ();
+    };
+    
     return (
         <section>
       <div className="container">
@@ -35,7 +78,7 @@ const ViewContact = () => {
             </div>
       </div>
       <div className="update-remove-div">
-      <input type={"button"} value={"update"} className="update-btn"/>
+      <input type={"button"} value={"update"} className="update-btn" onClick={updateContact}/>
       <input type={"button"} value={"remove"} className="remove-btn"/>
       </div>
       </section>
