@@ -30,8 +30,13 @@ async function getContactsByUserId(user_id) {
   return await Contact.find({ user: user_id });
 }
 
+async function getSpecificContact(contact_id) {
+  return await Contact.findById(contact_id);
+}
+
 module.exports = {
   addContact,
   getContacts,
   getContactsByUserId,
+  getSpecificContact,
 }  
