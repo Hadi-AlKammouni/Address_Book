@@ -50,6 +50,33 @@ ul {
 .nav-items > a:hover {
     transform: scale(1.1,1.1);
 } 
+
+/* Input fields of add-form class */
+
+.add-form {
+  margin: 100px 25%;
+}
+
+.form-control {
+  margin: 20px 0;
+}
+
+.form-control label {
+  display: block;
+  font-weight: bold;
+}
+
+.form-control input {
+  width: 100%;
+  height: 40px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 17px;
+}
+
+.form-control input:hover {
+  border-color: #13e9f0;
+}
   
 
  
