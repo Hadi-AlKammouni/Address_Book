@@ -77,6 +77,31 @@ ul {
 .form-control input:hover {
   border-color: #13e9f0;
 }
-  
+
+/* Button styling */
+
+.btn {
+  display: inline-block;
+  background: #15b3bfbc;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: inherit;
+  font-weight: bold;
+}
+
+.btn:active {
+  transform: scale(0.9);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
 
  
