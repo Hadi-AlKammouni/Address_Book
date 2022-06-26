@@ -11,8 +11,8 @@ const Navbar = () => {
     // { link: "view_contact/:id", name: "view_contact" },
   ];
 
-    // //Catch the current path
-    // console.log(location);
+    //Catch the current path
+    console.log(location);
 
   return (
     <nav className="top-bar">

@@ -23,7 +23,7 @@ async function addContact(body) {
 }
 
 async function getContacts() {
-    return await Contact.find().populate('user');
+    return await Contact.find();
 }
 
 async function getContactsByUserId(user_id) {
