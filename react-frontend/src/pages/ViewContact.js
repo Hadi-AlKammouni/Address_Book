@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ViewContact = () => {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [contact, setContact] = useState([]);
+    
+    //Get the clicked contact details
     var url = "http://localhost:4001/api/contact/get_contact_by_ID?id=" + id;
     const getContact = async () => {
       const res = await fetch(url,{
@@ -23,7 +27,7 @@ const ViewContact = () => {
         getData();
     }, [id]);
   
-        //Calling update api
+    //Calling update api
     const updateContact = async () => {
         alert("Now select what to change")
         let what_to_change = prompt(
@@ -62,8 +66,21 @@ const ViewContact = () => {
           },
           body: JSON.stringify(info)
         });
-        console.log("hiii");
         window.location.reload ();
+    };
+
+    //Calling remove api
+    const removeContact = async () => {
+        var update_url = "http://localhost:4001/api/contact/remove_contact?id=" + id;
+        const res = await fetch(update_url,{
+          method: "POST",
+          headers:{
+            "Content-Type" : "application/json",
+          },
+          body: JSON.stringify({id : id})
+        });
+        alert("Contact has been removed successfully!")
+        navigate("/view_contacts")
     };
     
     return (
@@ -79,7 +96,7 @@ const ViewContact = () => {
       </div>
       <div className="update-remove-div">
       <input type={"button"} value={"update"} className="update-btn" onClick={updateContact}/>
-      <input type={"button"} value={"remove"} className="remove-btn"/>
+      <input type={"button"} value={"remove"} className="remove-btn" onClick={removeContact}/>
       </div>
       </section>
     );
