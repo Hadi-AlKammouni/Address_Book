@@ -33,11 +33,13 @@ const ViewContacts = () => {
             }}
           >
             {/* Diplaying the contacts details */}
-            <h1>Contact name: {contact.name}</h1>
-            <h3>Phone number: {contact.phone_number}</h3>
+            <h2>👤 Contact name: </h2>
+            <h1>{contact.name}</h1>
+            {/* <h3>Phone number: {contact.phone_number}</h3>
             <h3>Relatioship status: {contact.relationship_status}</h3>
-            <h3>Email: {contact.email}</h3>
-            <h3>Location: {contact.location.coordinates[0]} / {contact.location.coordinates[1]}</h3>
+            <h3>Email: {contact.email}</h3> */}
+            <h2>📍 Coordinates location: </h2>
+            <h1>{contact.location.coordinates[0]} / {contact.location.coordinates[1]}</h1>
           </div>
         );
       })}

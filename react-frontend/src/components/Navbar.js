@@ -8,7 +8,7 @@ const Navbar = () => {
   const navItems = [
     { link: "register", name: "Register" },
     { link: "login", name: "Login" },
-    { link: "view_contact/:id", name: "View Contacts" },
+    { link: "view_contacts", name: "View Contacts" },
   ];
 
     //Catch the current path
