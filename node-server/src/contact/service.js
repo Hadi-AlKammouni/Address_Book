@@ -26,7 +26,12 @@ async function getContacts() {
     return await Contact.find().populate('user');
 }
 
+async function getContactsByUserId(user_id) {
+  return await Contact.find({ user: user_id });
+}
+
 module.exports = {
   addContact,
   getContacts,
+  getContactsByUserId,
 }  
