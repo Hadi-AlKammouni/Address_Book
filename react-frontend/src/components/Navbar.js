@@ -6,8 +6,8 @@ const Navbar = () => {
   const location = useLocation();
   // Iterate over nav items to add into UI
   const navItems = [
-    { link: "register", name: "register" },
-    { link: "login", name: "login" },
+    { link: "register", name: "Register" },
+    { link: "login", name: "Login" },
     // { link: "view_contact/:id", name: "view_contact" },
   ];
 

@@ -1,0 +1,55 @@
+/* CSS Reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Navigation */
+
+.top-bar {
+  height: 80px;
+  background-color: #15b3bfbc;
+  color: white;
+}
+
+.nav-items {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    font-size: 28px;
+}
+
+.nav-items > a {
+    color: white;
+}
+
+.nav-items > a {
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.nav-items > .active {
+    font-weight: 1000;
+    background-color: #13e9f0;
+    padding: 15px;
+    border-radius: 8px;
+} 
+
+.nav-items > a:hover {
+    transform: scale(1.1,1.1);
+} 
+  
+
+ 
