@@ -1,6 +1,17 @@
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import ViewContacts from "./pages/ViewContacts";
+
 function App() {
   return (
-    <div> HELLO WORLD!</div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="register" element={<Register/>}></Route>
+        <Route path="login" element={<Login/>}></Route>
+        <Route path="view_contact/:id" element={<ViewContacts/>}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
