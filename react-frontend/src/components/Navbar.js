@@ -8,8 +8,16 @@ const Navbar = () => {
   const navItems = [
     { link: "register", name: "Register" },
     { link: "login", name: "Login" },
-    { link: "view_contacts", name: "View Contacts" },
+    // { link: "view_contacts", name: "View Contacts" },
   ];
+  
+  const loggedIN = localStorage.getItem("token")
+  const user_name = localStorage.getItem("user_name")
+  if (loggedIN !== null){
+    navItems[0] = {link: "#", name: `Welcome ${user_name}`};
+    navItems[1] = {link: "login", name: `Login with # account`};
+    navItems.push({ link: "view_contacts", name: "View Contacts" });
+  } 
 
     //Catch the current path
     console.log(location);

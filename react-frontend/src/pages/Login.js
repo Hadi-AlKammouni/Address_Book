@@ -15,7 +15,9 @@ const submitLogin = async (info) => {
         // console.log(data);
         localStorage.setItem("token",data.token)
         localStorage.setItem("user_id",data._id)
+        localStorage.setItem("user_name",data.name)
         alert("You logged in successfully ✅")
+        window.location.reload ();
         return data;
     } catch (error){
         alert("Wrong email and/or password!")
