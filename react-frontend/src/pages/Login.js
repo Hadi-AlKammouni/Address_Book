@@ -14,6 +14,7 @@ const submitLogin = async (info) => {
         const data = await res.json();
         // console.log(data);
         localStorage.setItem("token",data.token)
+        localStorage.setItem("user_id",data._id)
         alert("You logged in successfully ✅")
         return data;
     } catch (error){
