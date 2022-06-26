@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import ViewContacts from "./pages/ViewContacts";
 import Navbar from "./components/Navbar";
 import ViewContact from "./pages/ViewContact";
+import AddContact from "./pages/AddContact";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="login" element={<Login/>}></Route>
         <Route path="view_contacts" element={<ViewContacts/>}></Route>
         <Route path="view_contacts/:id" element={<ViewContact/>}></Route>
+        <Route path="add_contact" element={<AddContact/>}></Route>
       </Routes>
     </BrowserRouter>
   );

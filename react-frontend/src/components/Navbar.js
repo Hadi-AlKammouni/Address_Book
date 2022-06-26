@@ -17,6 +17,7 @@ const Navbar = () => {
     navItems[0] = {link: "#", name: `Welcome ${user_name}`};
     navItems[1] = {link: "login", name: `Login with # account`};
     navItems.push({ link: "view_contacts", name: "View Contacts" });
+    navItems.push({ link: "add_contact", name: "Add Contact" });
   } 
 
     //Catch the current path
