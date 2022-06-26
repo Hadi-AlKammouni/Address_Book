@@ -4,9 +4,13 @@ import { useNavigate } from "react-router-dom";
 const ViewContacts = () => {
     const navigate = useNavigate();
     const [contacts, setContacts] = useState([]);
-
+    const user_id = localStorage.getItem("user_id");
+  console.log(user_id)
     const getContacts = async () => {
-        const res = await fetch("http://localhost:4001/api/contact/get_contact");
+      let url = "http://localhost:4001/api/contact/get_contact_by_his_userID?id=" + user_id;
+        const res = await fetch(url,{
+          method : "POST",
+        });
         const data = await res.json();
         return data;
     };

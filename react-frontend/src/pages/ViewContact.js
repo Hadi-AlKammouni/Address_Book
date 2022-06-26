@@ -95,8 +95,8 @@ const ViewContact = () => {
             </div>
       </div>
       <div className="update-remove-div">
-      <input type={"button"} value={"update"} className="update-btn" onClick={updateContact}/>
-      <input type={"button"} value={"remove"} className="remove-btn" onClick={removeContact}/>
+      <input type={"button"} value={"Update Contact"} className="update-btn" onClick={updateContact}/>
+      <input type={"button"} value={"Remove Contact"} className="remove-btn" onClick={removeContact}/>
       </div>
       </section>
     );
