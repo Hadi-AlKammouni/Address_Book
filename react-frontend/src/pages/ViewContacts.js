@@ -10,6 +10,9 @@ const ViewContacts = () => {
     const [searchEmailStartWith, setSearchEmailStartWith] = useState('');
     const [searchEmailEndWith, setSearchEmailEndWith] = useState('');
     const [searchEmailIncludesWith, setSearchEmailIncludesWith] = useState('');
+    const [searchPhoneNumberStartWith, setSearchPhoneNumberStartWith] = useState('');
+    const [searchPhoneNumberEndWith, setSearchPhoneNumberEndWith] = useState('');
+    const [searchPhoneNumberIncludesWith, setSearchPhoneNumberIncludesWith] = useState('');
 
     const user_id = localStorage.getItem("user_id");
   // console.log(user_id)
@@ -42,6 +45,11 @@ const ViewContacts = () => {
       <input type={"text"} placeholder={"Search by email starting with.."} onChange={(event) => {setSearchEmailStartWith(event.target.value)}}/>
       <input type={"text"} placeholder={"Search by email ending with.."} onChange={(event) => {setSearchEmailEndWith(event.target.value)}}/>
       <input type={"text"} placeholder={"Search by email including.."} onChange={(event) => {setSearchEmailIncludesWith(event.target.value)}}/>
+      </div>
+      <div>
+      <input type={"text"} placeholder={"Search by phone number starting with.."} onChange={(event) => {setSearchPhoneNumberStartWith(event.target.value)}}/>
+      <input type={"text"} placeholder={"Search by phone number ending with.."} onChange={(event) => {setSearchPhoneNumberEndWith(event.target.value)}}/>
+      <input type={"text"} placeholder={"Search by phone number including.."} onChange={(event) => {setSearchPhoneNumberIncludesWith(event.target.value)}}/>
       </div>
       {contacts.filter((contact)=>{
         if(searchNameStartWith === ""){
@@ -77,6 +85,24 @@ const ViewContacts = () => {
         if(searchEmailIncludesWith === ""){
           return contact
         }else if(contact.email.toLowerCase().includes(searchEmailIncludesWith.toLowerCase())){
+          return contact
+        }
+      }).filter((contact)=>{
+        if(searchPhoneNumberStartWith === ""){
+          return contact
+        }else if(contact.phone_number.toLowerCase().startsWith(searchPhoneNumberStartWith.toLowerCase())){
+          return contact
+        }
+      }).filter((contact)=>{
+        if(searchPhoneNumberEndWith === ""){
+          return contact
+        }else if(contact.phone_number.toLowerCase().endsWith(searchPhoneNumberEndWith.toLowerCase())){
+          return contact
+        }
+      }).filter((contact)=>{
+        if(searchPhoneNumberIncludesWith === ""){
+          return contact
+        }else if(contact.phone_number.toLowerCase().includes(searchPhoneNumberIncludesWith.toLowerCase())){
           return contact
         }
       }).map((contact) => {
