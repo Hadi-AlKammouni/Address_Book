@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 const ViewContacts = () => {
     const navigate = useNavigate();
     const [contacts, setContacts] = useState([]);
+    const [searchNameStartWith, setSearchNameStartWith] = useState('');
+
     const user_id = localStorage.getItem("user_id");
-  console.log(user_id)
+  // console.log(user_id)
     const getContacts = async () => {
       let url = "http://localhost:4001/api/contact/get_contact_by_his_userID?id=" + user_id;
         const res = await fetch(url,{
@@ -26,7 +28,14 @@ const ViewContacts = () => {
 
     return (
     <div className="container">
-      {contacts.map((contact) => {
+      <input type={"text"} placeholder={"Search by name starting with.."} onChange={event => {searchNameStartWith(event.target.value)}}/>
+      {contacts.filter((contact)=>{
+        if(searchNameStartWith === ""){
+          return contact
+        }else if(contact.name.toLowerCase().startsWith(searchNameStartWith.toLowerCase())){
+          return contact
+        }
+      }).map((contact) => {
         // console.log(contact)
         return (
           <div
