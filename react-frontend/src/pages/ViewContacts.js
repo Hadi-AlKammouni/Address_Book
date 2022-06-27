@@ -5,6 +5,7 @@ const ViewContacts = () => {
     const navigate = useNavigate();
     const [contacts, setContacts] = useState([]);
     const [searchNameStartWith, setSearchNameStartWith] = useState('');
+    const [searchNameEndWith, setSearchNameEndWith] = useState('');
 
     const user_id = localStorage.getItem("user_id");
   // console.log(user_id)
@@ -29,10 +30,17 @@ const ViewContacts = () => {
     return (
     <div className="container">
       <input type={"text"} placeholder={"Search by name starting with.."} onChange={(event) => {setSearchNameStartWith(event.target.value)}}/>
+      <input type={"text"} placeholder={"Search by name ending with.."} onChange={(event) => {setSearchNameEndWith(event.target.value)}}/>
       {contacts.filter((contact)=>{
         if(searchNameStartWith === ""){
           return contact
         }else if(contact.name.toLowerCase().startsWith(searchNameStartWith.toLowerCase())){
+          return contact
+        }
+      }).filter((contact)=>{
+        if(searchNameEndWith === ""){
+          return contact
+        }else if(contact.name.toLowerCase().endsWith(searchNameEndWith.toLowerCase())){
           return contact
         }
       }).map((contact) => {
