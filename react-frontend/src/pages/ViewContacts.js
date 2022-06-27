@@ -7,6 +7,9 @@ const ViewContacts = () => {
     const [searchNameStartWith, setSearchNameStartWith] = useState('');
     const [searchNameEndWith, setSearchNameEndWith] = useState('');
     const [searchNameIncludesWith, setSearchNameIncludesWith] = useState('');
+    const [searchEmailStartWith, setSearchEmailStartWith] = useState('');
+    const [searchEmailEndWith, setSearchEmailEndWith] = useState('');
+    const [searchEmailIncludesWith, setSearchEmailIncludesWith] = useState('');
 
     const user_id = localStorage.getItem("user_id");
   // console.log(user_id)
@@ -30,9 +33,16 @@ const ViewContacts = () => {
 
     return (
     <div className="container">
+      <div>
       <input type={"text"} placeholder={"Search by name starting with.."} onChange={(event) => {setSearchNameStartWith(event.target.value)}}/>
       <input type={"text"} placeholder={"Search by name ending with.."} onChange={(event) => {setSearchNameEndWith(event.target.value)}}/>
       <input type={"text"} placeholder={"Search by name including.."} onChange={(event) => {setSearchNameIncludesWith(event.target.value)}}/>
+      </div>
+      <div>
+      <input type={"text"} placeholder={"Search by email starting with.."} onChange={(event) => {setSearchEmailStartWith(event.target.value)}}/>
+      <input type={"text"} placeholder={"Search by email ending with.."} onChange={(event) => {setSearchEmailEndWith(event.target.value)}}/>
+      <input type={"text"} placeholder={"Search by email including.."} onChange={(event) => {setSearchEmailIncludesWith(event.target.value)}}/>
+      </div>
       {contacts.filter((contact)=>{
         if(searchNameStartWith === ""){
           return contact
@@ -51,6 +61,24 @@ const ViewContacts = () => {
         }else if(contact.name.toLowerCase().includes(searchNameIncludesWith.toLowerCase())){
           return contact
         }
+      }).filter((contact)=>{
+        if(searchEmailStartWith === ""){
+          return contact
+        }else if(contact.email.toLowerCase().startsWith(searchEmailStartWith.toLowerCase())){
+          return contact
+        }
+      }).filter((contact)=>{
+        if(searchEmailEndWith === ""){
+          return contact
+        }else if(contact.email.toLowerCase().endsWith(searchEmailEndWith.toLowerCase())){
+          return contact
+        }
+      }).filter((contact)=>{
+        if(searchEmailIncludesWith === ""){
+          return contact
+        }else if(contact.email.toLowerCase().includes(searchEmailIncludesWith.toLowerCase())){
+          return contact
+        }
       }).map((contact) => {
         // console.log(contact)
         return (
@@ -64,9 +92,9 @@ const ViewContacts = () => {
             {/* Diplaying the contacts details */}
             <h2>👤 Contact name: </h2>
             <h1>{contact.name}</h1>
-            {/* <h3>Phone number: {contact.phone_number}</h3>
+            <h3>Phone number: {contact.phone_number}</h3>
             <h3>Relatioship status: {contact.relationship_status}</h3>
-            <h3>Email: {contact.email}</h3> */}
+            <h3>Email: {contact.email}</h3>
             <h2>📍 Coordinates location: </h2>
             <h1>{contact.location.coordinates[0]} / {contact.location.coordinates[1]}</h1>
           </div>
