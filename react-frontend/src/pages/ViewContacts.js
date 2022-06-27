@@ -28,7 +28,7 @@ const ViewContacts = () => {
 
     return (
     <div className="container">
-      <input type={"text"} placeholder={"Search by name starting with.."} onChange={event => {searchNameStartWith(event.target.value)}}/>
+      <input type={"text"} placeholder={"Search by name starting with.."} onChange={(event) => {setSearchNameStartWith(event.target.value)}}/>
       {contacts.filter((contact)=>{
         if(searchNameStartWith === ""){
           return contact
