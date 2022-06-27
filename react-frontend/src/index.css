@@ -176,3 +176,14 @@ ul {
   padding: 0 10vh;
 }
  
+/*Media Query (not accurate :(*/
+@media only screen and (max-width:1030px){
+
+  .filter-section>div{
+    flex-direction: column;
+  }
+
+  .filter-section input{
+    width: 100%;
+  }
+}
