@@ -6,6 +6,7 @@ const ViewContacts = () => {
     const [contacts, setContacts] = useState([]);
     const [searchNameStartWith, setSearchNameStartWith] = useState('');
     const [searchNameEndWith, setSearchNameEndWith] = useState('');
+    const [searchNameIncludesWith, setSearchNameIncludesWith] = useState('');
 
     const user_id = localStorage.getItem("user_id");
   // console.log(user_id)
@@ -31,6 +32,7 @@ const ViewContacts = () => {
     <div className="container">
       <input type={"text"} placeholder={"Search by name starting with.."} onChange={(event) => {setSearchNameStartWith(event.target.value)}}/>
       <input type={"text"} placeholder={"Search by name ending with.."} onChange={(event) => {setSearchNameEndWith(event.target.value)}}/>
+      <input type={"text"} placeholder={"Search by name including.."} onChange={(event) => {setSearchNameIncludesWith(event.target.value)}}/>
       {contacts.filter((contact)=>{
         if(searchNameStartWith === ""){
           return contact
@@ -41,6 +43,12 @@ const ViewContacts = () => {
         if(searchNameEndWith === ""){
           return contact
         }else if(contact.name.toLowerCase().endsWith(searchNameEndWith.toLowerCase())){
+          return contact
+        }
+      }).filter((contact)=>{
+        if(searchNameIncludesWith === ""){
+          return contact
+        }else if(contact.name.toLowerCase().includes(searchNameIncludesWith.toLowerCase())){
           return contact
         }
       }).map((contact) => {
