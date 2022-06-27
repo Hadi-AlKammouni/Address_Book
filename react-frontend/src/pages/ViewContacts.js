@@ -13,6 +13,9 @@ const ViewContacts = () => {
     const [searchPhoneNumberStartWith, setSearchPhoneNumberStartWith] = useState('');
     const [searchPhoneNumberEndWith, setSearchPhoneNumberEndWith] = useState('');
     const [searchPhoneNumberIncludesWith, setSearchPhoneNumberIncludesWith] = useState('');
+    const [searchRelationshipStatusStartWith, setSearchRelationshipStatusStartWith] = useState('');
+    const [searchRelationshipStatusEndWith, setSearchRelationshipStatusEndWith] = useState('');
+    const [searchRelationshipStatusIncludesWith, setSearchRelationshipStatusIncludesWith] = useState('');
 
     const user_id = localStorage.getItem("user_id");
   // console.log(user_id)
@@ -50,6 +53,11 @@ const ViewContacts = () => {
       <input type={"text"} placeholder={"Search by phone number starting with.."} onChange={(event) => {setSearchPhoneNumberStartWith(event.target.value)}}/>
       <input type={"text"} placeholder={"Search by phone number ending with.."} onChange={(event) => {setSearchPhoneNumberEndWith(event.target.value)}}/>
       <input type={"text"} placeholder={"Search by phone number including.."} onChange={(event) => {setSearchPhoneNumberIncludesWith(event.target.value)}}/>
+      </div>
+      <div>
+      <input type={"text"} placeholder={"Search by relationship status starting with.."} onChange={(event) => {setSearchRelationshipStatusStartWith(event.target.value)}}/>
+      <input type={"text"} placeholder={"Search by relationship status ending with.."} onChange={(event) => {setSearchRelationshipStatusEndWith(event.target.value)}}/>
+      <input type={"text"} placeholder={"Search by relationship status including.."} onChange={(event) => {setSearchRelationshipStatusIncludesWith(event.target.value)}}/>
       </div>
       {contacts.filter((contact)=>{
         if(searchNameStartWith === ""){
@@ -103,6 +111,24 @@ const ViewContacts = () => {
         if(searchPhoneNumberIncludesWith === ""){
           return contact
         }else if(contact.phone_number.toLowerCase().includes(searchPhoneNumberIncludesWith.toLowerCase())){
+          return contact
+        }
+      }).filter((contact)=>{
+        if(searchRelationshipStatusStartWith === ""){
+          return contact
+        }else if(contact.relationship_status.toLowerCase().startsWith(searchRelationshipStatusStartWith.toLowerCase())){
+          return contact
+        }
+      }).filter((contact)=>{
+        if(searchRelationshipStatusEndWith === ""){
+          return contact
+        }else if(contact.relationship_status.toLowerCase().endsWith(searchRelationshipStatusEndWith.toLowerCase())){
+          return contact
+        }
+      }).filter((contact)=>{
+        if(searchRelationshipStatusIncludesWith === ""){
+          return contact
+        }else if(contact.relationship_status.toLowerCase().includes(searchRelationshipStatusIncludesWith.toLowerCase())){
           return contact
         }
       }).map((contact) => {
