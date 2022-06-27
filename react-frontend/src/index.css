@@ -150,6 +150,25 @@ ul {
   background-color: #53d7e0f1;
 }
 
+/* Filter section */
+
+.filter-section>div{
+  display: flex;
+  justify-content: space-evenly;
+  /* flex-direction: column; */
+  margin-top: 10px;
+}
+
+.filter-section input{
+  border-radius: 5px;
+  width: 50%;
+  padding: 10px;
+  margin: 10px;
+}
+
+.filter-section input:hover{
+  border-color: rgb(254, 121, 98);
+}
 
 /* Utils */
 

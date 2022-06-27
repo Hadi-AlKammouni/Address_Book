@@ -39,6 +39,7 @@ const ViewContacts = () => {
 
     return (
     <div className="container">
+      <div className="filter-section">
       <div>
       <input type={"text"} placeholder={"Search by name starting with.."} onChange={(event) => {setSearchNameStartWith(event.target.value)}}/>
       <input type={"text"} placeholder={"Search by name ending with.."} onChange={(event) => {setSearchNameEndWith(event.target.value)}}/>
@@ -58,6 +59,7 @@ const ViewContacts = () => {
       <input type={"text"} placeholder={"Search by relationship status starting with.."} onChange={(event) => {setSearchRelationshipStatusStartWith(event.target.value)}}/>
       <input type={"text"} placeholder={"Search by relationship status ending with.."} onChange={(event) => {setSearchRelationshipStatusEndWith(event.target.value)}}/>
       <input type={"text"} placeholder={"Search by relationship status including.."} onChange={(event) => {setSearchRelationshipStatusIncludesWith(event.target.value)}}/>
+      </div>
       </div>
       {contacts.filter((contact)=>{
         if(searchNameStartWith === ""){
