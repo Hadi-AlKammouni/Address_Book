@@ -166,6 +166,26 @@ ul {
   margin: 10px;
 }
 
+.filter-section button{
+  border-radius: 5px;
+  width: 50%;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.458);
+  color: white;
+}
+
+.filter-section button:hover{
+  background-color: rgba(78, 77, 77, 0.458);
+  color: white;
+}
+
+.filter-section button:active{
+  transform: scale(0.9,0.9);
+  color: rgb(254, 121, 98);
+}
+
 .filter-section input:hover{
   border-color: rgb(254, 121, 98);
 }
