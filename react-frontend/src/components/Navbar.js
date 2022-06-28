@@ -18,6 +18,7 @@ const Navbar = () => {
     navItems[1] = {link: "login", name: `Login with # account`};
     navItems.push({ link: "view_contacts", name: "View Contacts" });
     navItems.push({ link: "add_contact", name: "Add Contact" });
+    navItems.push({ link: "logout", name: "Logout" });
   } 
 
     //Catch the current path
