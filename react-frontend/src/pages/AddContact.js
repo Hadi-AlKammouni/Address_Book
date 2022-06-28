@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Map from "../components/Map";
 
 //Calling add contact api
 const submitAddContact = async (info) => {
@@ -29,6 +30,16 @@ const AddContact = () => {
  const [email, setEmail] = useState("");
  const [location1, setLocation1] = useState("");
  const [location2, setLocation2] = useState("");
+
+ const fillCoordinates =() => {
+  console.log("hiii")
+  const lat_coordinate = localStorage.getItem("coordinateLat")
+  const long_coordinate = localStorage.getItem("coordinateLong")
+  // console.log("from local",lat_coordinate)
+  // console.log("from local",long_coordinate)
+  setLocation1(long_coordinate)
+  setLocation2(lat_coordinate)
+ }
 
  //Add Data to Backend on Submit
  const onSubmit = (e) => {
@@ -66,7 +77,7 @@ const AddContact = () => {
      <div className="form-control">
        <label>Contact Phone Number</label>
        <input
-         type={"text"}
+         type={"number"}
          placeholder={"Insert Phone Number"}
          value={phone_number}
          onChange={(e) => {
@@ -103,7 +114,7 @@ const AddContact = () => {
        <label>Contact Location 1</label>
        <input
          type={"text"}
-         placeholder={"Insert long."}
+         placeholder={"Insert long. or click anywhere on the map"}
          value={location1}
          onChange={(e) => {
             setLocation1(e.target.value);
@@ -115,7 +126,7 @@ const AddContact = () => {
        <label>Contact Location 2</label>
        <input
          type={"text"}
-         placeholder={"Insert lat."}
+         placeholder={"Insert lat. or click anywhere on the map"}
          value={location2}
          onChange={(e) => {
             setLocation2(e.target.value);
@@ -123,8 +134,9 @@ const AddContact = () => {
        />
      </div>
 
-     <iframe width="100%" height="600" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;coord=52.70967533219885, -8.020019531250002&amp;q=1%20Grafton%20Street%2C%20Dublin%2C%20Ireland&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br />
-
+     {/* Calling the Map component to set location from the map */}
+     <Map/>
+     <input type={"button"} value="Fill Coordinates" className="coor-btn coor-btn-block" onClick={fillCoordinates}/>
      <input type={"submit"} value="Create Contact" className="btn btn-block" />
    </form>
  );
